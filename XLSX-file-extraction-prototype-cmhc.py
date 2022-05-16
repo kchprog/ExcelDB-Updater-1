@@ -4,7 +4,7 @@ import os
 from typing import Tuple
 from datetime import datetime
 from openpyxl import load_workbook
-import Tkinter, tkFileDialog
+# import Tkinter, tkFileDialog
 
 def extract_all_xlsx_files_in_directory(path) -> list[str]:
     xlsx_found = []
@@ -60,10 +60,9 @@ def return_newest_file(list_of_files: list) -> str:
     latest_file = max(list_of_files, key=os.path.getmtime)
     return latest_file
     
-def main():
-    root = Tkinter.Tk()
-    dirname = tkFileDialog.askdirectory(parent=root, initialdir="/",
-                                    title='Please select a directory')
+#def main():
+    # root = Tkinter.Tk()
+    # dirname = tkFileDialog.askdirectory(parent=root, initialdir="/", title='Please select a directory')
     
     # TODO: Add a check to make sure the user selected a directory
     
