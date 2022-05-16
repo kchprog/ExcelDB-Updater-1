@@ -1,6 +1,8 @@
 """
     Purpose:
-    - This is a prototype for the CMHC database made by Kevin Chen
+    - This is a prototype testing the downloading and
+    modification of files using an open source API.
+    - Goal is to assist in the prototyping of the CMHC database made by Kevin Chen
     - The goal is to effectively retrieve information from several external sources
     and then to integrate them into a single database presented in CSV format
     - The resulting data should be able to be easily imported and edited manually
@@ -29,7 +31,8 @@ Approach: Use the Excel API to directly access and manipulate the data on the on
 def main():
     url = 'https://cmhcschl-my.sharepoint.com/personal/kchen_cmhc-schl_gc_ca'
     relative_url = '/personal/kchen_cmhc-schl_gc_ca/Documents/Database%20Revamp%20Project%20-%20API%20Test%20Storage.xlsx'
-
+    partial_relative_url = '/personal/kchen_cmhc-schl_gc_ca/Documents/'
+    
     username = 'USERNAME'
     password = 'PASSWORD'
 
@@ -76,7 +79,7 @@ def main():
     with open(filename, 'rb') as input_file:
         file_content = input_file.read()
     
-    target_folder = web.get_folder_by_server_relative_url("/personal/kchen_cmhc-schl_gc_ca/Documents/")
+    target_folder = web.get_folder_by_server_relative_url(partial_relative_url)
     name = os.path.basename(filename)
     target_file = target_folder.upload_file(name, file_content).execute_query()
     
